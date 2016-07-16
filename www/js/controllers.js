@@ -1,8 +1,16 @@
 angular.module('app.controllers', ['app.services'])
 
-    .controller('mapCtrl', function ($scope, geolocationFactory, $cordovaGeolocation) {
+    .controller('mapCtrl', function ($scope, geolocationFactory, $cordovaGeolocation, database) {
         geolocationFactory.getCurrentPosition().then(function (position) {
             $scope.geolocation = position.coords;
+            database.getStoriesNearMe(position.coords.latitude, position.coords.longitude, 50000)
+                .then(
+                    function(stories){
+                        $scope.stories = stories;
+                    }, function (error) {
+                        console.log(error);
+                    }
+                )
         });
 
         var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
@@ -23,6 +31,8 @@ angular.module('app.controllers', ['app.services'])
                 title: "My Location"
             });
         });*/
+
+
         var myLocation;
         $cordovaGeolocation
             .watchPosition({timeout: 10000, enableHighAccuracy: false})
