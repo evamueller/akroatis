@@ -3,7 +3,15 @@ angular.module('app.controllers', ['app.services'])
     .controller('mapCtrl', function ($scope, geolocationFactory, $cordovaGeolocation, database) {
         geolocationFactory.getCurrentPosition().then(function (position) {
             $scope.geolocation = position.coords;
-            database.getStoriesNearMe(position.coords.latitude, position.coords.longitude, 50000)
+            database.getStoriesNearMe(position.coords.latitude, position.coords.longitude, 500)
+                .then(
+                    function(stories){
+                        $scope.stories = stories;
+                    }, function (error) {
+                        console.log(error);
+                    }
+                )
+            database.getAllStories()
                 .then(
                     function(stories){
                         $scope.stories = stories;
