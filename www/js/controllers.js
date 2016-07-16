@@ -1,5 +1,6 @@
 angular.module('app.controllers', ['app.services'])
 
+
     .controller('mapCtrl', function ($scope, geolocationFactory, $cordovaGeolocation, database) {
         geolocationFactory.getCurrentPosition().then(function (position) {
             $scope.geolocation = position.coords;
@@ -32,13 +33,13 @@ angular.module('app.controllers', ['app.services'])
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
         /*navigator.geolocation.getCurrentPosition(function (pos) {
-            map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-            var myLocation = new google.maps.Marker({
-                position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
-                map: map,
-                title: "My Location"
-            });
-        });*/
+         map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+         var myLocation = new google.maps.Marker({
+         position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
+         map: map,
+         title: "My Location"
+         });
+         });*/
 
 
         var myLocation;
@@ -60,24 +61,32 @@ angular.module('app.controllers', ['app.services'])
 
         $scope.map = map;
     })
+   
+.controller('settingsPageCtrl', function($scope) {
 
-    .controller('settingsPageCtrl', function ($scope) {
+})
+         
+.controller('signupCtrl', function($scope) {
 
-    })
-
-    .controller('signupCtrl', function ($scope) {
-
-    })
-
-    .controller('profilCtrl', function ($scope) {
-
-    })
-
-    .controller('storiesCtrl', function ($scope) {
+})
+   
+.controller('profilCtrl', function($scope) {
 
     })
 
-    .controller('loginCtrl', function ($scope) {
-
+    .controller('storiesCtrl', function($scope, database) {
+        $scope.stories = database.getStoriesNearMe();
     })
+
+    .controller('storyCtrl', function($scope, $stateParams, stories) {
+        $scope.story = stories.getItem($stateParams.storyId);
+    })
+
+    .controller('chapterCtrl', function($scope, $stateParams, chapter, stories) {
+        $scope.chapter = chapter.getItem(story, $stateParams.chapterId);
+    })
+
+    .controller('loginCtrl', function($scope) {
+
+})
  
