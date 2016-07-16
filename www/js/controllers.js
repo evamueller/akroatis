@@ -1,7 +1,9 @@
-angular.module('app.controllers', [])
+angular.module('app.controllers', ['app.services'])
   
-.controller('mapCtrl', function($scope) {
-
+.controller('mapCtrl', function($scope, geolocationFactory) {
+    geolocationFactory.getCurrentPosition().then(function(position) {
+        $scope.geolocation = position.coords;
+    });
 })
    
 .controller('settingsPageCtrl', function($scope) {
