@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="cygnus.uberspace.de">
+    <serverData>
+      <paths name="cygnus.uberspace.de">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/akroatis" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

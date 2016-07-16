@@ -1,0 +1,25 @@
+{
+  "name": "akroatis",
+  "version": "1.0.0",
+  "description": "- [WebStorm](https://www.jetbrains.com/webstorm/)\r   - [Get Free License](https://www.jetbrains.com/student/)\r - [node.js](https://nodejs.org/)",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mongoose": "^4.5.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evamueller/akroatis.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evamueller/akroatis/issues"
+  },
+  "homepage": "https://github.com/evamueller/akroatis#readme"
+}

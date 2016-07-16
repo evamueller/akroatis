@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MongoConfiguration">
+    <option name="serverConfigurations">
+      <list>
+        <ServerConfiguration>
+          <option name="authenticationDatabase" value="admin" />
+          <option name="connectOnIdeStartup" value="true" />
+          <option name="label" value="Akroatis Uberspace Mongo" />
+          <option name="password" value="Ieth3ahd1c" />
+          <option name="serverUrls">
+            <list>
+              <option value="cygnus.uberspace.de:21145" />
+            </list>
+          </option>
+          <option name="username" value="akroatis_mongoadmin" />
+        </ServerConfiguration>
+      </list>
+    </option>
+    <option name="shellPath" value="C:\Program Files\MongoDB\Server\3.2\bin\mongo.exe" />
+  </component>
+</project>
