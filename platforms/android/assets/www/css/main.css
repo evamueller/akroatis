@@ -2,7 +2,20 @@
     height: 100%;
 }
 #map {
+  position:absolute;
+  top:44px;
+    bottom:49px;
     width: 100%;
     height: 100%;
     padding: 0;
+}
+.has-tabs-top {
+  top:0px;
+  bottom:49px;
+}
+.tabs-top > .tabs, .tabs.tabs-top{
+  top:initial;
+}
+.audio-stories{
+  width:100%;
 }
