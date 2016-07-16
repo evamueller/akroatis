@@ -88,20 +88,20 @@ secondStory_first_chapter.save(function (err) {
     if (err) {
         console.log(err);
     } else {
-        console.log('wuff');
+        console.log('wuf');
     }
 });
 secondStory_second_chapter.save(function (err) {
     if (err) {
         console.log(err);
     } else {
-        console.log('wuff');
+        console.log('wuf');
     }
 });
 secondStory.save(function (err) {
     if (err) {
         console.log(err);
     } else {
-        console.log('wuff');
+        console.log('wuf');
     }
 });
