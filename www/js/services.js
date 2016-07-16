@@ -1,4 +1,5 @@
-angular.module('app.services', ['ionic', 'ngCordova'])
+angular.module('app.services', ['ionic', 'ngCordova', 'app.models'])
+
     .factory('geolocationFactory', function($ionicPlatform, $cordovaGeolocation) {
         var positionOptions = {
             timeout: 10000,
@@ -14,16 +15,29 @@ angular.module('app.services', ['ionic', 'ngCordova'])
             }
         }
     })
-    .factory('database', function($http) {
-        var database = 'http://www.google.de/';
+    .factory('database', function(stories) {
         return {
-            getStoriesNearMe: $http.get(database + '').then(
-                function onSuccess(response) {
-                    return response;
-                },
-                function onError(error) {
-                    return error;
-                }
-            )
+            getStoriesNearMe: function() {
+                var story = {
+                    id: 123,
+                    name: "Eine Geschichte",
+                    description: "Test",
+                    author: "Ich",
+                    chapters: [
+                        {id: 123123123,
+                            name: "Chap1",
+                            description: "EinTest",
+                        audio: 'http://akroatis.cygnus.uberspace.de/bensound-betterdays.mp3'},
+                        {id: 2334,
+                            name: "Chap1222",
+                            description: "EinTest",
+                        audio:'http://akroatis.cygnus.uberspace.de/bensound-betterdays.mp3'}
+                    ],
+                    longitude: 123,
+                    latitude: 123
+                };
+                stories.addItem(story);
+                return stories.getAll();
+            }
         }
     });
