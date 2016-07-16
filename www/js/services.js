@@ -1,5 +1,4 @@
-angular.module('app.services', ['ionic', 'ngCordova', 'app.models'])
-
+angular.module('app.services', ['ionic', 'ngCordova'])
     .factory('geolocationFactory', function($ionicPlatform, $cordovaGeolocation) {
         var positionOptions = {
             timeout: 10000,
@@ -15,29 +14,33 @@ angular.module('app.services', ['ionic', 'ngCordova', 'app.models'])
             }
         }
     })
-    .factory('database', function(stories) {
+    .factory('database', function($http) {
+        var database = 'http://akroatis.cygnus.uberspace.de/nodejs/stories/';
         return {
-            getStoriesNearMe: function() {
-                var story = {
-                    id: 123,
-                    name: "Eine Geschichte",
-                    description: "Test",
-                    author: "Ich",
-                    chapters: [
-                        {id: 123123123,
-                            name: "Chap1",
-                            description: "EinTest",
-                        audio: 'http://akroatis.cygnus.uberspace.de/bensound-betterdays.mp3'},
-                        {id: 2334,
-                            name: "Chap1222",
-                            description: "EinTest",
-                        audio:'http://akroatis.cygnus.uberspace.de/bensound-betterdays.mp3'}
-                    ],
-                    longitude: 123,
-                    latitude: 123
-                };
-                stories.addItem(story);
-                return stories.getAll();
+            getStoriesNearMe: function(latitude, longitude, distance) {
+                return(
+                    $http.get(database + latitude + '/' + longitude + '/distance/' + distance).then(
+                        function onSuccess(response) {
+                            return response.data;
+                        },
+                        function onError(error) {
+                            return error;
+                        }
+                    )
+                );
+            },
+
+            getAllStories: function(){
+                return(
+                    $http.get(database + 'all').then(
+                        function onSuccess(response) {
+                            return response.data;
+                        },
+                        function onError(error) {
+                            return error;
+                        }
+                    )
+                );
             }
         }
     });
