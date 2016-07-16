@@ -10,11 +10,6 @@ mongoose.connect('mongodb://'+dbauth.user+':'+dbauth.pass+'@'+dbauth.host+':'+db
 var Story = require('./stories');
 var Chapter = require('./chapters');
 
-// respond with "hello world" when a GET request is made to the homepage
-app.get('/', function(req, res) {
-    res.send('hello world');
-});
-
 app.listen(62123, function () {
     console.log('Example app listening on port 3000!');
 });
@@ -43,6 +38,8 @@ app.get('/stories/:lat/:long/distance/:distance', function(req, res) {
         res.send(stories);
     });
 });
+
+app.use(express.static(__dirname + '/public'));
 
 function getDistanceFromLatLonInM(lat1,lon1,lat2,lon2) {
     var R = 6371; // Radius of the earth in km

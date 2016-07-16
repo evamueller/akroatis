@@ -1,28 +1,65 @@
 angular.module('app.controllers', ['app.services'])
-  
-.controller('mapCtrl', function($scope, geolocationFactory) {
-    geolocationFactory.getCurrentPosition().then(function(position) {
-        $scope.geolocation = position.coords;
-    });
-})
-   
-.controller('settingsPageCtrl', function($scope) {
 
-})
-         
-.controller('signupCtrl', function($scope) {
+    .controller('mapCtrl', function ($scope, geolocationFactory, $cordovaGeolocation) {
+        geolocationFactory.getCurrentPosition().then(function (position) {
+            $scope.geolocation = position.coords;
+        });
 
-})
-   
-.controller('profilCtrl', function($scope) {
+        var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
 
-})
-   
-.controller('storiesCtrl', function($scope) {
+        var mapOptions = {
+            center: myLatlng,
+            zoom: 16,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
 
-})
-   
-.controller('loginCtrl', function($scope) {
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-})
+        /*navigator.geolocation.getCurrentPosition(function (pos) {
+            map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+            var myLocation = new google.maps.Marker({
+                position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
+                map: map,
+                title: "My Location"
+            });
+        });*/
+        var myLocation;
+        $cordovaGeolocation
+            .watchPosition({timeout: 10000, enableHighAccuracy: false})
+            .then(null,function(err) {
+                // error
+            }, function (position) {
+                if(myLocation !== undefined) {
+                    myLocation.setMap(null);
+                }
+                map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+                myLocation = new google.maps.Marker({
+                    position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+                    map: map,
+                    title: "My Location"
+                });
+            });
+
+        $scope.map = map;
+    })
+
+    .controller('settingsPageCtrl', function ($scope) {
+
+    })
+
+    .controller('signupCtrl', function ($scope) {
+
+    })
+
+    .controller('profilCtrl', function ($scope) {
+
+    })
+
+    .controller('storiesCtrl', function ($scope) {
+
+    })
+
+    .controller('loginCtrl', function ($scope) {
+
+    })
  
