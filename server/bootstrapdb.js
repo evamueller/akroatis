@@ -1,5 +1,8 @@
+var dbauth = require('./database');
+
 var mongoose = require("mongoose");
-mongoose.connect('mongodb://akroatis_mongoadmin:Ieth3ahd1c@localhost:21145/akroatis', {auth: {authdb: "admin"}});
+console.log('mongodb://'+dbauth.user+':'+dbauth.pass+'@'+dbauth.host+':'+dbauth.port+'/'+dbauth.db);
+mongoose.connect('mongodb://'+dbauth.user+':'+dbauth.pass+'@'+dbauth.host+':'+dbauth.port+'/'+dbauth.db, {auth:{authdb:"admin"}});
 
 var Story = require('./stories.js');
 var Chapter = require('./chapters.js');

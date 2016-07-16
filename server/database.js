@@ -1,6 +1,6 @@
 var dbauth = {
     user: 'akroatis_mongoadmin',
-    pass: 'Ieth3ahd1c',
+    pass: 'jooPei5Wae',
     db: 'akroatis',
     port: '21145',
     host: 'localhost'
