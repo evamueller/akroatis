@@ -1,17 +1,21 @@
 angular.module('app.models', [])
     .service('settings', function() {
 
-        return {radius:20};
+        return {radius:500};
     })
     .service('stories', function($filter) {
         var storiesService = {};
         var storiesList = [];
 
+        storiesService.setAll = function(stories) {
+            storiesList = stories;
+        }
+
         storiesService.getAll = function() {
             return storiesList;
         }
         storiesService.getItem = function(storyId) {
-            return $filter('filter')(storiesList, {id: storyId})[0];
+            return $filter('filter')(storiesList, {_id: storyId})[0];
         }
         storiesService.addItem = function(item) {
             storiesList.push(item);

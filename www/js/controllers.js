@@ -1,26 +1,7 @@
 angular.module('app.controllers', ['app.services'])
 
-
     .controller('mapCtrl', function ($scope, geolocationFactory, $cordovaGeolocation, database) {
-        geolocationFactory.getCurrentPosition().then(function (position) {
-            $scope.geolocation = position.coords;
-            database.getStoriesNearMe(position.coords.latitude, position.coords.longitude, 500)
-                .then(
-                    function(stories){
-                        $scope.stories = stories;
-                    }, function (error) {
-                        console.log(error);
-                    }
-                )
-            database.getAllStories()
-                .then(
-                    function(stories){
-                        $scope.stories = stories;
-                    }, function (error) {
-                        console.log(error);
-                    }
-                )
-        });
+
 
         var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
 
@@ -61,24 +42,24 @@ angular.module('app.controllers', ['app.services'])
 
         $scope.map = map;
     })
-   
-.controller('settingsPageCtrl', function($scope) {
 
-})
-         
-.controller('signupCtrl', function($scope) {
-
-})
-   
-.controller('profilCtrl', function($scope) {
+    .controller('settingsPageCtrl', function($scope) {
 
     })
 
-    .controller('storiesCtrl', function($scope, database) {
-        $scope.stories = database.getStoriesNearMe();
+    .controller('signupCtrl', function($scope) {
+
     })
 
-    .controller('storyCtrl', function($scope, $stateParams, stories) {
+    .controller('profilCtrl', function($scope) {
+
+    })
+
+    .controller('storiesCtrl', function($scope,stories, database) {
+        $scope.stories = stories.getAll();
+    })
+
+    .controller('storyCtrl', function($scope, $stateParams, $sce, stories) {
         $scope.story = stories.getItem($stateParams.storyId);
     })
 
@@ -88,5 +69,5 @@ angular.module('app.controllers', ['app.services'])
 
     .controller('loginCtrl', function($scope) {
 
-})
+    })
  

@@ -1,4 +1,4 @@
-angular.module('app.services', ['ionic', 'ngCordova'])
+angular.module('app.services', ['ionic', 'ngCordova', 'app.models'])
     .factory('geolocationFactory', function($ionicPlatform, $cordovaGeolocation) {
         var positionOptions = {
             timeout: 10000,
@@ -14,16 +14,35 @@ angular.module('app.services', ['ionic', 'ngCordova'])
             }
         }
     })
-    .factory('database', function($http) {
-        var database = 'http://www.google.de/';
+    .factory('database', function($http, stories) {
+        var database = 'http://akroatis.cygnus.uberspace.de/nodejs/stories/';
         return {
-            getStoriesNearMe: $http.get(database + '').then(
-                function onSuccess(response) {
-                    return response;
-                },
-                function onError(error) {
-                    return error;
-                }
-            )
+            getStoriesNearMe: function(latitude, longitude, distance) {
+                return(
+                    $http.get(database + latitude + '/' + longitude + '/distance/' + distance).then(
+                        function onSuccess(response) {
+                            stories.setAll(response.data);
+                            return response.data;
+                        },
+                        function onError(error) {
+                            return error;
+                        }
+                    )
+                );
+            },
+
+            getAllStories: function(){
+                return(
+                    $http.get(database + 'all').then(
+                        function onSuccess(response) {
+                            stories.setAll(response.data);
+                            return response.data;
+                        },
+                        function onError(error) {
+                            return error;
+                        }
+                    )
+                );
+            }
         }
     });

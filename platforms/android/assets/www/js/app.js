@@ -5,10 +5,20 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic', 'ngCordova', 'app.controllers', 'app.routes', 'app.services', 'app.directives'])
+angular.module('app', ['ionic', 'ngCordova', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'app.models'])
 
-.run(function($ionicPlatform) {
+.run(function($rootScope, $ionicPlatform, geolocationFactory, database, settings) {
+
+
+  
   $ionicPlatform.ready(function() {
+    $rootScope.$watch(geolocationFactory.getCurrentPosition(), function(position, oldVal) {
+      console.log(position);
+      if (position) {
+        database.getStoriesNearMe(position.coords.latitude, position.coords.longitude, settings.radius);
+        console.log('watching ');
+      }
+    }, true);
     console.log("Ready");
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
