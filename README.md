@@ -13,7 +13,7 @@
 - [Cordova](https://cordova.apache.org/)
   - [Geolocation Plugin](https://github.com/apache/cordova-plugin-geolocation)
   - [Camera Plugin](https://github.com/apache/cordova-plugin-camera)
-  
+
 ## Technology
 
 ### Google Maps
@@ -39,3 +39,7 @@
 - Als Anwender der App möchte ich auf einer Karte die verfügbaren Hörbücher in meiner Umgebung sehen können um so herauszufinden, wo ich hinlaufen muss.
 - Als registrierter Benutzer möchte ich Hörbücher anlegen und verwalten können um sie anderen zur Verfügung zu stellen.
 - Als registrierter Benutzer möchte ich Kapitel aufnehmen können oder bereits aufgenommene Audiofiles an eine Geolocation knüpfen, sodass sie dort für andere Benutzer hörbar wird.
+
+## Licenses
+Icons made by [madebyoliver](http://www.flaticon.com/authors/madebyoliver) from [www.flaticon.com](http://www.flaticon.com) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
+Icons made by [Freepik](http://www.flaticon.com/authors/freepik) from [www.flaticon.com](http://www.flaticon.com) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
