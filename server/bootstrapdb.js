@@ -7,75 +7,75 @@ mongoose.connect('mongodb://'+dbauth.user+':'+dbauth.pass+'@'+dbauth.host+':'+db
 var Story = require('./stories.js');
 var Chapter = require('./chapters.js');
 
-var eva_first_chapter = new Chapter({
+var dasHausInDerHeide_first_chapter = new Chapter({
     'lat': '51.494086',
     'long': '7.420317',
-    'name': 'firstChapter',
+    'name': 'Das Haus in der Heide Kapitel 1',
     'audio': 'http://akroatis.cygnus.uberspace.de/bensound-betterdays.mp3',
     'chapterNumber': 1
 });
 
-var eva_second_chapter = new Chapter({
+var dasHausInDerHeide_second_chapter = new Chapter({
     'lat': '51.494307',
     'long': '7.417938',
-    'name': 'secondChapter',
+    'name': 'Das Haus in der Heide Kapitel 2',
     'audio': 'http://akroatis.cygnus.uberspace.de/bensound-goinghigher.mp3',
     'chapterNumber': 2
 });
 
-var eva_story = new Story({
-    'author': 'Eva',
+var dasHausInDerHeide = new Story({
+    'author': 'Annette von Droste-hülshoff',
     'date': Date.now(),
-    'name': 'akroatis',
+    'name': 'Das Haus in der Heide',
     'chapters': []
 });
 
 
-var secondStory_first_chapter = new Chapter({
+var Winternacht_first_chapter = new Chapter({
     'lat': '51.494683',
     'long': '7.419428',
-    'name': 'firstChapter',
+    'name': 'Winternacht Kapitel 1',
     'audio': '',
     'chapterNumber': 1
 });
 
-var secondStory_second_chapter = new Chapter({
+var Winternacht_second_chapter = new Chapter({
     'lat': '51.495658',
     'long': '7.418816',
-    'name': 'firstChapter',
+    'name': 'Winternacht Kapitel 2',
     'audio': '',
     'chapterNumber': 2
 });
 
-var second_story = new Story({
-    'author': 'Moritz',
+var Winternacht = new Story({
+    'author': 'Gottfried Keller',
     'date': Date.now(),
-    'name': 'secondStory',
+    'name': 'Winternacht',
     'chapters': []
 });
 
 
-eva_story.chapters.push(eva_first_chapter);
-eva_story.chapters.push(eva_second_chapter);
+dasHausInDerHeide.chapters.push(dasHausInDerHeide_first_chapter);
+dasHausInDerHeide.chapters.push(dasHausInDerHeide_second_chapter);
 
-second_story.chapters.push(secondStory_first_chapter);
-second_story.chapters.push(secondStory_second_chapter);
+Winternacht.chapters.push(Winternacht_first_chapter);
+Winternacht.chapters.push(Winternacht_second_chapter);
 
-eva_first_chapter.save(function (err) {
+dasHausInDerHeide_first_chapter.save(function (err) {
     if (err) {
         console.log(err);
     } else {
         console.log('meow');
     }
 });
-eva_second_chapter.save(function (err) {
+dasHausInDerHeide_second_chapter.save(function (err) {
     if (err) {
         console.log(err);
     } else {
         console.log('meow');
     }
 });
-eva_story.save(function (err) {
+dasHausInDerHeide.save(function (err) {
     if (err) {
         console.log(err);
     } else {
@@ -84,21 +84,21 @@ eva_story.save(function (err) {
 });
 
 
-secondStory_first_chapter.save(function (err) {
+Winternacht_first_chapter.save(function (err) {
     if (err) {
         console.log(err);
     } else {
         console.log('wuf');
     }
 });
-secondStory_second_chapter.save(function (err) {
+Winternacht_second_chapter.save(function (err) {
     if (err) {
         console.log(err);
     } else {
         console.log('wuf');
     }
 });
-second_story.save(function (err) {
+Winternacht.save(function (err) {
     if (err) {
         console.log(err);
     } else {
