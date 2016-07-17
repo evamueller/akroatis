@@ -6,29 +6,32 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 angular.module('app', ['ionic', 'ngCordova', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'app.models'])
+    .config(function($sceProvider) {
+      // Completely disable SCE.  For demonstration purposes only!
+      // Do not use in new projects.
+      $sceProvider.enabled(false);
+    })
+    .run(function($rootScope, $ionicPlatform, $cordovaGeolocation, database, settings) {
 
-.run(function($rootScope, $ionicPlatform, geolocationFactory, database, settings) {
+      $ionicPlatform.ready(function() {
 
-
-  
-  $ionicPlatform.ready(function() {
-    $rootScope.$watch(geolocationFactory.getCurrentPosition(), function(position, oldVal) {
-      console.log(position);
-      if (position) {
-        database.getStoriesNearMe(position.coords.latitude, position.coords.longitude, settings.radius);
-        console.log('watching ');
-      }
-    }, true);
-    console.log("Ready");
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
-  });
-})
+        console.log("Ready");
+        // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+        // for form inputs)
+        if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+          cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+          cordova.plugins.Keyboard.disableScroll(true);
+        }
+        if (window.StatusBar) {
+          // org.apache.cordova.statusbar required
+          StatusBar.styleDefault();
+        }
+      });
+      $cordovaGeolocation
+          .watchPosition({timeout: 10000, enableHighAccuracy: false})
+          .then(null,function(err) {
+            // error
+          }, function (position) {
+            database.getStoriesNearMe(position.coords.latitude, position.coords.longitude, settings.radius);
+          });
+    });

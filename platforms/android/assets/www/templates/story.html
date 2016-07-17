@@ -5,24 +5,15 @@
 <<<<<<< HEAD
         <ion-item class="item-thumbnail-left item-icon-right"  ng-repeat="chapter in story.chapters" ui-sref="tabsController.story({storyId:chapter._id})">
 =======
-<<<<<<< HEAD
-        <ion-item class="item-thumbnail-left item-icon-right  "  ng-repeat="chapter in story.chapters" ui-sref="tabsController.story">
-            <h2>{{chapter.name}}</h2>
-            <p>{{chapter.description}}<br>
-                <audio controls>
-                    <source src="{{getSafeUrl(chapter.audio)}}" type="audio/mpeg">
-=======
-        <ion-item class="item-thumbnail-left item-icon-right  "  ng-repeat="chapter in story.chapters" ng-href="chapter/{{chapter.id}}" ui-sref="tabsController.story">
+        <ion-item class="item-thumbnail-left item-icon-right" ng-repeat="chapter in story.chapters" ui-sref="tabsController.story">
 >>>>>>> 212f55264984d113f1ee35f30b15c71924dfae3d
             <h2>{{chapter.name}}</h2>
             <p>{{chapter.description}}<br>
                 <audio controls>
-                    <source src="{{chapter.audio}}" type="audio/mpeg">
->>>>>>> origin/master
+                    <source src="{{ chapter.audio }}" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
             </p>
-            <i class="icon ion-forward"></i>
         </ion-item>
     </ion-content>
 </ion-view>

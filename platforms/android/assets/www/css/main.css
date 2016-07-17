@@ -9,6 +9,8 @@
     height: 100%;
     padding: 0;
 }
+#map label { width: auto; display:inline; }
+#map img { max-height: none; max-width: none; }
 .has-tabs-top {
   top:0px;
   bottom:49px;
