@@ -11,7 +11,7 @@ var dasHausInDerHeide_first_chapter = new Chapter({
     'lat': '51.494086',
     'long': '7.420317',
     'name': 'Das Haus in der Heide Kapitel 1',
-    'audio': 'http://akroatis.cygnus.uberspace.de/bensound-betterdays.mp3',
+    'audio': 'http://akroatis.cygnus.uberspace.de/adventskalender2014_16_hausheide_elli_128kb.mp3',
     'chapterNumber': 1
 });
 
@@ -19,7 +19,7 @@ var dasHausInDerHeide_second_chapter = new Chapter({
     'lat': '51.494307',
     'long': '7.417938',
     'name': 'Das Haus in der Heide Kapitel 2',
-    'audio': 'http://akroatis.cygnus.uberspace.de/bensound-goinghigher.mp3',
+    'audio': 'http://akroatis.cygnus.uberspace.de/adventskalender2014_04_derbratapfel_pjw_128kb.mp3',
     'chapterNumber': 2
 });
 
@@ -35,7 +35,7 @@ var Winternacht_first_chapter = new Chapter({
     'lat': '51.494683',
     'long': '7.419428',
     'name': 'Winternacht Kapitel 1',
-    'audio': '',
+    'audio': 'http://akroatis.cygnus.uberspace.de/adventskalender2014_14_winternacht_bl_128kb.mp3',
     'chapterNumber': 1
 });
 
@@ -43,7 +43,7 @@ var Winternacht_second_chapter = new Chapter({
     'lat': '51.495658',
     'long': '7.418816',
     'name': 'Winternacht Kapitel 2',
-    'audio': '',
+    'audio': 'http://akroatis.cygnus.uberspace.de/adventskalender2014_06_nikolas_nt_128kb.mp3',
     'chapterNumber': 2
 });
 

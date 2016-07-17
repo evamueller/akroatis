@@ -32,20 +32,26 @@ angular.module('app.controllers', ['app.services'])
                 // error
             }, function(position) {
                 $scope.geolocation = position.coords;
-                if (myLocation !== undefined) {
-                    myLocation.setMap(null);
-                }
-                myLocation = new google.maps.Marker({
-                    position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
-                    map: map,
-                    icon: {
-                        url: "img/listening.svg",
-                        anchor: new google.maps.Point(25, 50),
-                        scaledSize: new google.maps.Size(50, 50)
-                    },
-                    title: "My Location"
-                });
+                $scope.removeMyLocation();
+                $scope.drawMyLocation();
             });
+            $scope.drawMyLocation = function() {
+              myLocation = new google.maps.Marker({
+                  position: new google.maps.LatLng($scope.geolocation.latitude, $scope.geolocation.longitude),
+                  map: map,
+                  icon: {
+                      url: "img/listening.svg",
+                      anchor: new google.maps.Point(25, 50),
+                      scaledSize: new google.maps.Size(50, 50)
+                  },
+                  title: "My Location"
+              });
+            };
+            $scope.removeMyLocation = function() {
+              if (myLocation !== undefined) {
+                  myLocation.setMap(null);
+              }
+            };
         $scope.storiesMarker = [];
         $scope.storiesInfoWindows = [];
         $cordovaGeolocation
@@ -69,6 +75,8 @@ angular.module('app.controllers', ['app.services'])
         map.addListener('zoom_changed', function() {
             $scope.removeStoriesMarker();
             $scope.drawStoriesMarker();
+            $scope.removeMyLocation();
+            $scope.drawMyLocation();
         });
 
         $scope.drawStoriesMarker = function() {
