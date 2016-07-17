@@ -3,7 +3,7 @@ angular.module('app.models', [])
 
         return {radius:500};
     })
-    .service('stories', function() {
+    .service('stories', function($filter) {
         var storiesService = {};
         var storiesList = [];
 
@@ -16,13 +16,7 @@ angular.module('app.models', [])
             return storiesList;
         }
         storiesService.getItem = function(storyId) {
-            console.log(storyId);
-            for (var story in storiesList) {
-                console.log(story._id);
-
-                if (story._id == storyId)
-                    return story;
-            }
+            return $filter('filter')(storiesList, {_id: storyId})[0];
         }
         storiesService.addItem = function(item) {
             storiesList.push(item);
