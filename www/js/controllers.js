@@ -104,7 +104,7 @@ angular.module('app.controllers', ['app.services'])
             $scope.storiesMarker.push(marker);
 
             var infowindow = new google.maps.InfoWindow({
-                content: '<h3>' + story.name + '</h3><p>Kapitel: ' + chapter.chapterNumber + '<br>' + chapter.name + '</p><audio class="audio-stories" controls> <source src = "' + chapter.audio + '" type="audio/mpeg" ></audio>'
+                content: '<h3>' + story.name + '</h3><p>Kapitel: ' + chapter.chapterNumber + '<br>' + chapter.name + '</p><audio class="nu-audio-stories" controls> <source src = "' + chapter.audio + '" type="audio/mpeg" ></audio>'
             });
             $scope.storiesInfoWindows.push(infowindow);
 
@@ -133,8 +133,8 @@ angular.module('app.controllers', ['app.services'])
 
 })
 
-.controller('storiesCtrl', function($scope, database) {
-    database.getAllStories().then(function(data) {
+.controller('storiesCtrl', function($scope, database, stories) {
+    database.getAllStories(stories).then(function(data) {
         $scope.stories = data;
     });
 })
