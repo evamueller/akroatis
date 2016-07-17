@@ -1,8 +1,10 @@
 <ion-view title="Stories" id="page8" class=" ">
     <ion-content padding="true" class="has-header">
         <ion-list id="stories-list3" class=" manual-list-fullwidth ">
-            <ion-item class="item-avatar  " id="stories-list-item8">
-                <h2>Item</h2>
+            <ion-item class="item-thumbnail-left item-icon-right  "  ng-repeat="story in stories" ng-href="story/{{story.id}}" ui-sref="tabsController.story">
+                <h2>{{story.name}}</h2>
+                <p>{{story.description}}</p>
+                <i class="icon ion-forward"></i>
             </ion-item>
             <audio class="audio-stories" controls>
                 <source src="http://akroatis.cygnus.uberspace.de/bensound-betterdays.mp3" type="audio/mpeg">
