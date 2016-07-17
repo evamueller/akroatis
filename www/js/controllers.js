@@ -1,5 +1,4 @@
 angular.module('app.controllers', ['app.services'])
-
 .controller('mapCtrl', function($scope, geolocationFactory, $cordovaGeolocation, database) {
     geolocationFactory.getCurrentPosition().then(function(position) {
         $scope.geolocation = position.coords;
@@ -13,7 +12,6 @@ angular.module('app.controllers', ['app.services'])
                 }
             )
     });
-
     var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
 
     var mapOptions = {
@@ -43,33 +41,31 @@ angular.module('app.controllers', ['app.services'])
                 title: "My Location"
             });
         });
+
     $cordovaGeolocation
         .getCurrentPosition({
             timeout: 1000,
             enableHighAccuracy: false
         })
         .then(function(position) {
-            map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+            map.setCenter(new google.maps.LatLng($scope.geolocation.latitude, $scope.geolocation.longitude));
             database.getStoriesNearMe(position.coords.latitude, position.coords.longitude, 50000)
                 .then(function(stories) {
                     $scope.stories = stories;
                     for (var i = 0; i < $scope.stories.length; i++) {
-                        for (var j = 0; j < $scope.stories[i].chapters.length; j++) {
+                        var marker = new google.maps.Marker({
+                            position: new google.maps.LatLng($scope.stories[i].chapters[0].lat, $scope.stories[i].chapters[0].long),
+                            map: map,
+                            title: $scope.stories[i].name
+                        });
 
-                            var marker = new google.maps.Marker({
-                                position: new google.maps.LatLng($scope.stories[i].chapters[j].lat, $scope.stories[i].chapters[j].long),
-                                map: map,
-                                title: $scope.stories[i].name
-                            });
+                        var infowindow = new google.maps.InfoWindow({
+                            content: '<h3>' + $scope.stories[i].name + '</h3><p>Kapitel: ' + $scope.stories[i].chapters[0].chapterNumber + '<br>' + $scope.stories[i].chapters[0].name + '</p><audio class="audio-stories" controls> <source src = "' + $scope.stories[i].chapters[0].audio + '" type="audio/mpeg" ></audio>'
+                        });
 
-                            var infowindow = new google.maps.InfoWindow({
-                                content: '<h3>' + $scope.stories[i].name + '</h3><p>Kapitel: ' + $scope.stories[i].chapters[j].chapterNumber + '<br>' + $scope.stories[i].chapters[j].name + '</p><audio class="audio-stories" controls> <source src = "' + $scope.stories[i].chapters[j].audio + '" type="audio/mpeg" ></audio>'
-                            });
-
-                            marker.addListener('click', function() {
-                                infowindow.open(map, marker);
-                            });
-                        }
+                        marker.addListener('click', function() {
+                            infowindow.open(map, marker);
+                        });
                     }
                 }, function(error) {
                     console.log(error);
@@ -82,28 +78,28 @@ angular.module('app.controllers', ['app.services'])
     $scope.center = function() {
         map.setCenter(new google.maps.LatLng($scope.geolocation.latitude, $scope.geolocation.longitude));
     }
-})
-
-.controller('settingsPageCtrl', function($scope) {
-
-})
-
-.controller('signupCtrl', function($scope) {
     $scope.map = map;
 })
+
+.controller('settingsPageCtrl', function($scope, settings) {
+    $scope.settings = settings;
+})
+
+.controller('signupCtrl', function($scope) {})
 
 .controller('profilCtrl', function($scope) {
 
 })
 
 .controller('storiesCtrl', function($scope, database) {
-    database.getAllStories().then(function(data){
-      $scope.stories = data;
+    database.getAllStories().then(function(data) {
+        $scope.stories = data;
     });
 })
 
 .controller('storyCtrl', function($scope, $stateParams, stories) {
     $scope.story = stories.getItem($stateParams.storyId);
+    console.log($scope.story);
 })
 
 .controller('chapterCtrl', function($scope, $stateParams, chapter, stories) {

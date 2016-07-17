@@ -7,11 +7,22 @@ angular.module('app.models', [])
         var storiesService = {};
         var storiesList = [];
 
+<<<<<<< HEAD
+        storiesService.setAll = function(stories) {
+            storiesList = stories;
+        }
+
+=======
+>>>>>>> origin/master
         storiesService.getAll = function() {
             return storiesList;
         }
         storiesService.getItem = function(storyId) {
+<<<<<<< HEAD
+            return $filter('filter')(storiesList, {_id: storyId})[0];
+=======
             return $filter('filter')(storiesList, {id: storyId})[0];
+>>>>>>> origin/master
         }
         storiesService.addItem = function(item) {
             storiesList.push(item);
