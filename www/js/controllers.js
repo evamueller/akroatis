@@ -53,19 +53,22 @@ angular.module('app.controllers', ['app.services'])
                 .then(function(stories) {
                     $scope.stories = stories;
                     for (var i = 0; i < $scope.stories.length; i++) {
-                        var marker = new google.maps.Marker({
-                            position: new google.maps.LatLng($scope.stories[i].chapters[0].lat, $scope.stories[i].chapters[0].long),
-                            map: map,
-                            title: $scope.stories[i].name
-                        });
+                        for (var j = 0; j < $scope.stories[i].chapters.length; j++) {
 
-                        var infowindow = new google.maps.InfoWindow({
-                            content: '<h3>'+$scope.stories[i].name+'</h3><p>Kapitel: ' + $scope.stories[i].chapters[0].chapterNumber + '<br>'+$scope.stories[i].chapters[0].name+'</p><audio class="audio-stories" controls> <source src = "'+$scope.stories[i].chapters[0].audio+'" type="audio/mpeg" ></audio>'
-                        });
+                            var marker = new google.maps.Marker({
+                                position: new google.maps.LatLng($scope.stories[i].chapters[j].lat, $scope.stories[i].chapters[j].long),
+                                map: map,
+                                title: $scope.stories[i].name
+                            });
 
-                        marker.addListener('click', function() {
-                            infowindow.open(map, marker);
-                        });
+                            var infowindow = new google.maps.InfoWindow({
+                                content: '<h3>' + $scope.stories[i].name + '</h3><p>Kapitel: ' + $scope.stories[i].chapters[j].chapterNumber + '<br>' + $scope.stories[i].chapters[j].name + '</p><audio class="audio-stories" controls> <source src = "' + $scope.stories[i].chapters[j].audio + '" type="audio/mpeg" ></audio>'
+                            });
+
+                            marker.addListener('click', function() {
+                                infowindow.open(map, marker);
+                            });
+                        }
                     }
                 }, function(error) {
                     console.log(error);
