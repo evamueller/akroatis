@@ -92,10 +92,18 @@ angular.module('app.controllers', ['app.services'])
                 .then(function(stories) {
                     $scope.stories = stories;
                     for (var i = 0; i < $scope.stories.length; i++) {
-                        new google.maps.Marker({
+                        var marker = new google.maps.Marker({
                             position: new google.maps.LatLng($scope.stories[i].chapters[0].lat, $scope.stories[i].chapters[0].long),
                             map: map,
                             title: $scope.stories[i].name
+                        });
+
+                        var infowindow = new google.maps.InfoWindow({
+                            content: '<h3>'+$scope.stories[i].name+'</h3><p>Kapitel: ' + $scope.stories[i].chapters[0].chapterNumber + '<br>'+$scope.stories[i].chapters[0].name+'</p><audio class="audio-stories" controls> <source src = "'+$scope.stories[i].chapters[0].audio+'" type="audio/mpeg" ></audio>'
+                        });
+
+                        marker.addListener('click', function() {
+                            infowindow.open(map, marker);
                         });
                     }
                 }, function(error) {
@@ -121,8 +129,12 @@ angular.module('app.controllers', ['app.services'])
     .controller('signupCtrl', function($scope) {
 =======
 .controller('signupCtrl', function($scope) {
+<<<<<<< HEAD
 >>>>>>> origin/master
 
+=======
+    $scope.map = map;
+>>>>>>> origin/master
 })
 
 <<<<<<< HEAD
@@ -133,6 +145,7 @@ angular.module('app.controllers', ['app.services'])
 
 })
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     .controller('storiesCtrl', function($scope,stories, database) {
         $scope.stories = stories.getAll();
@@ -152,7 +165,18 @@ angular.module('app.controllers', ['app.services'])
     .controller('loginCtrl', function($scope) {
 =======
 .controller('storiesCtrl', function($scope) {
+=======
+.controller('storiesCtrl', function($scope, database) {
+    $scope.stories = database.getStoriesNearMe();
+})
 
+.controller('storyCtrl', function($scope, $stateParams, stories) {
+    $scope.story = stories.getItem($stateParams.storyId);
+})
+>>>>>>> origin/master
+
+.controller('chapterCtrl', function($scope, $stateParams, chapter, stories) {
+    $scope.chapter = chapter.getItem(story, $stateParams.chapterId);
 })
 
 .controller('loginCtrl', function($scope) {

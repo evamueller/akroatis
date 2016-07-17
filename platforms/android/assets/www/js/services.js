@@ -22,7 +22,10 @@ angular.module('app.services', ['ionic', 'ngCordova', 'app.models'])
     .factory('database', function($http) {
         var database = 'http://akroatis.cygnus.uberspace.de/nodejs/stories/';
         return {
+<<<<<<< HEAD
 
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
             getStoriesNearMe: function(latitude, longitude, distance) {
                 return(
@@ -46,6 +49,19 @@ angular.module('app.services', ['ionic', 'ngCordova', 'app.models'])
                             stories.setAll(response.data);
 =======
 >>>>>>> origin/master
+                            return response.data;
+                        },
+                        function onError(error) {
+                            return error;
+                        }
+                    )
+                );
+            },
+
+            getAllStories: function(){
+                return(
+                    $http.get(database + 'all').then(
+                        function onSuccess(response) {
                             return response.data;
                         },
                         function onError(error) {

@@ -2,11 +2,19 @@
     <ion-content padding="true" class="has-header">
         <h1>{{story.name}}</h1>
         {{story.description}}
+<<<<<<< HEAD
         <ion-item class="item-thumbnail-left item-icon-right  "  ng-repeat="chapter in story.chapters" ui-sref="tabsController.story">
             <h2>{{chapter.name}}</h2>
             <p>{{chapter.description}}<br>
                 <audio controls>
                     <source src="{{getSafeUrl(chapter.audio)}}" type="audio/mpeg">
+=======
+        <ion-item class="item-thumbnail-left item-icon-right  "  ng-repeat="chapter in story.chapters" ng-href="chapter/{{chapter.id}}" ui-sref="tabsController.story">
+            <h2>{{chapter.name}}</h2>
+            <p>{{chapter.description}}<br>
+                <audio controls>
+                    <source src="{{chapter.audio}}" type="audio/mpeg">
+>>>>>>> origin/master
                     Your browser does not support the audio element.
                 </audio>
             </p>
