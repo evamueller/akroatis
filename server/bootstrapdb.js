@@ -98,7 +98,7 @@ secondStory_second_chapter.save(function (err) {
         console.log('wuf');
     }
 });
-secondStory.save(function (err) {
+second_story.save(function (err) {
     if (err) {
         console.log(err);
     } else {
