@@ -7,9 +7,6 @@ angular.module('app.routes', [])
       // Set up the various states which the app can be in.
       // Each state's controller can be found in controllers.js
       $stateProvider
-
-
-
           .state('tabsController.map', {
             url: '/map',
             views: {
@@ -61,7 +58,7 @@ angular.module('app.routes', [])
           })
 
           .state('tabsController.story', {
-            url: '/story/:storyId',
+            url: '/story/{storyId}',
             views: {
               'tab3': {
                 templateUrl: 'templates/story.html',

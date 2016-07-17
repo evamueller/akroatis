@@ -32,8 +32,6 @@ angular.module('app', ['ionic', 'ngCordova', 'app.controllers', 'app.routes', 'a
           .then(null,function(err) {
             // error
           }, function (position) {
-            console.log("Wat");
             database.getStoriesNearMe(position.coords.latitude, position.coords.longitude, settings.radius);
           });
-    })
-    .filter('unsafe', function($sce) { return $sce.trustAsUrl; });
+    });

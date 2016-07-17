@@ -1,18 +1,11 @@
 <ion-view title="Stories" id="page8" class=" ">
     <ion-content padding="true" class="has-header">
         <ion-list id="stories-list3" class=" manual-list-fullwidth ">
-            <ion-item class="item-thumbnail-left item-icon-right  "  ng-repeat="story in stories" ng-href="story/{{story._id}}" ui-sref="tabsController.story">
+            <ion-item class="item-thumbnail-left item-icon-right"  ng-repeat="story in stories" ng-href="story/{{story._id}}" ui-sref="tabsController.story">
                 <h2>{{story.name}}</h2>
                 <p>{{story.description}}</p>
                 <i class="icon ion-forward"></i>
             </ion-item>
-<<<<<<< HEAD
-=======
-            <audio class="audio-stories" controls>
-                <source src="http://akroatis.cygnus.uberspace.de/bensound-betterdays.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
->>>>>>> origin/master
         </ion-list>
     </ion-content>
 </ion-view>

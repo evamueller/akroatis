@@ -3,7 +3,7 @@ angular.module('app.models', [])
 
         return {radius:500};
     })
-    .service('stories', function($filter) {
+    .service('stories', function() {
         var storiesService = {};
         var storiesList = [];
 
@@ -12,10 +12,17 @@ angular.module('app.models', [])
         }
 
         storiesService.getAll = function() {
+            console.log(storiesList);
             return storiesList;
         }
         storiesService.getItem = function(storyId) {
-            return $filter('filter')(storiesList, {_id: storyId})[0];
+            console.log(storyId);
+            for (var story in storiesList) {
+                console.log(story._id);
+
+                if (story._id == storyId)
+                    return story;
+            }
         }
         storiesService.addItem = function(item) {
             storiesList.push(item);
@@ -28,16 +35,11 @@ angular.module('app.models', [])
         }
         return storiesService;
     })
-    .service('chapter', function($filter, deepSearch) {
+    .service('chapter', function() {
         var chapterService = {};
 
         chapterService.getAll = function(story) {
             return story.chapters;
-        };
-
-        chapterService.getItem = function(story, chapterId) {
-            //return deepSearch.find(stories, chapterId);
-            //return $filter('filter')(story.chapters, {id: chapterId})[0];
         };
 
         chapterService.addItem = function(story, chapter) {

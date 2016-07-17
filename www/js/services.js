@@ -22,12 +22,6 @@ angular.module('app.services', ['ionic', 'ngCordova', 'app.models'])
                     $http.get(database + latitude + '/' + longitude + '/distance/' + distance).then(
                         function onSuccess(response) {
                             stories.setAll(response.data);
-                            console.log(response);
-                            console.log(latitude);
-                            console.log(longitude);
-
-                            console.log(distance);
-
                             return response.data;
                         },
                         function onError(error) {
@@ -37,7 +31,7 @@ angular.module('app.services', ['ionic', 'ngCordova', 'app.models'])
                 );
             },
 
-            getAllStories: function(){
+            getAllStories: function(stories){
                 return(
                     $http.get(database + 'all').then(
                         function onSuccess(response) {
