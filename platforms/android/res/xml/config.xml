@@ -15,19 +15,16 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
     <allow-intent href="market:*" />
-    <splash density="land-ldpi" src="resources\android\splash\drawable-land-ldpi-screen" />
-    <splash density="land-mdpi" src="resources\android\splash\drawable-land-mdpi-screen" />
-    <splash density="land-hdpi" src="resources\android\splash\drawable-land-hdpi-screen" />
-    <splash density="land-xhdpi" src="resources\android\splash\drawable-land-xhdpi-screen" />
-    <splash density="land-xxhdpi" src="resources\android\splash\drawable-land-xxhdpi-screen" />
-    <splash density="land-xxxhdpi" src="resources\android\splash\drawable-land-xxxhdpi-screen" />
-    <splash density="port-ldpi" src="resources\android\splash\drawable-port-ldpi-screen" />
-    <splash density="port-mdpi" src="resources\android\splash\drawable-port-mdpi-screen" />
-    <splash density="port-hdpi" src="resources\android\splash\drawable-port-hdpi-screen" />
-    <splash density="port-xhdpi" src="resources\android\splash\drawable-port-xhdpi-screen" />
-    <splash density="port-xxhdpi" src="resources\android\splash\drawable-port-xxhdpi-screen" />
-    <splash density="port-xxxhdpi" src="resources\android\splash\drawable-port-xxxhdpi-screen" />
+    <splash density="port-mdpi" src="platforms\android\res\drawable-port-mdpi\splash.png" />
+    <splash density="port-ldpi" src="platforms\android\res\drawable-port-ldpi\splash.png" />
+    <splash density="port-xhdpi" src="platforms\android\res\drawable-port-xhdpi\splash.png" />
+    <splash density="port-xxhdpi" src="platforms\android\res\drawable-port-xxhdpi\splash.png" />
+    <splash density="port-xxxhdpi" src="platforms\android\res\drawable-port-xxxhdpi\splash.png" />
     <name>Akroatis</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -44,5 +41,5 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <preference name="SplashScreen" value="screen" />
-    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="SplashScreenDelay" value="5000" />
 </widget>

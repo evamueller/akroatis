@@ -18,23 +18,16 @@
   <allow-intent href="geo:*"/>
   <platform name="android">
     <allow-intent href="market:*"/>
-    <splash src="resources\android\splash\drawable-land-ldpi-screen" density="land-ldpi"/>
-    <splash src="resources\android\splash\drawable-land-mdpi-screen" density="land-mdpi"/>
-    <splash src="resources\android\splash\drawable-land-hdpi-screen" density="land-hdpi"/>
-    <splash src="resources\android\splash\drawable-land-xhdpi-screen" density="land-xhdpi"/>
-    <splash src="resources\android\splash\drawable-land-xxhdpi-screen" density="land-xxhdpi"/>
-    <splash src="resources\android\splash\drawable-land-xxxhdpi-screen" density="land-xxxhdpi"/>
-    <splash src="resources\android\splash\drawable-port-ldpi-screen" density="port-ldpi"/>
-    <splash src="resources\android\splash\drawable-port-mdpi-screen" density="port-mdpi"/>
-    <splash src="resources\android\splash\drawable-port-hdpi-screen" density="port-hdpi"/>
-    <splash src="resources\android\splash\drawable-port-xhdpi-screen" density="port-xhdpi"/>
-    <splash src="resources\android\splash\drawable-port-xxhdpi-screen" density="port-xxhdpi"/>
-    <splash src="resources\android\splash\drawable-port-xxxhdpi-screen" density="port-xxxhdpi"/>
+    <splash src="platforms\android\res\drawable-port-mdpi\splash.png" density="port-mdpi"/>
+    <splash src="platforms\android\res\drawable-port-ldpi\splash.png" density="port-ldpi"/>
+    <splash src="platforms\android\res\drawable-port-xhdpi\splash.png" density="port-xhdpi"/>
+    <splash src="platforms\android\res\drawable-port-xxhdpi\splash.png" density="port-xxhdpi"/>
+    <splash src="platforms\android\res\drawable-port-xxxhdpi\splash.png" density="port-xxxhdpi"/>
   </platform>
   <platform name="ios">
     <allow-intent href="itms:*"/>
     <allow-intent href="itms-apps:*"/>
   </platform>
   <preference name="SplashScreen" value="screen"/>
-  <preference name="SplashScreenDelay" value="3000"/>
+  <preference name="SplashScreenDelay" value="5000"/>
 </widget>
