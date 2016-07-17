@@ -14,13 +14,21 @@ angular.module('app.services', ['ionic', 'ngCordova', 'app.models'])
             }
         }
     })
+<<<<<<< HEAD
     .factory('database', function($http, stories) {
         var database = 'http://akroatis.cygnus.uberspace.de/nodejs/stories/';
         return {
+=======
+    .factory('database', function($http) {
+        var database = 'http://akroatis.cygnus.uberspace.de/nodejs/stories/';
+        return {
+
+>>>>>>> origin/master
             getStoriesNearMe: function(latitude, longitude, distance) {
                 return(
                     $http.get(database + latitude + '/' + longitude + '/distance/' + distance).then(
                         function onSuccess(response) {
+<<<<<<< HEAD
                             stories.setAll(response.data);
                             return response.data;
                         },
@@ -36,6 +44,8 @@ angular.module('app.services', ['ionic', 'ngCordova', 'app.models'])
                     $http.get(database + 'all').then(
                         function onSuccess(response) {
                             stories.setAll(response.data);
+=======
+>>>>>>> origin/master
                             return response.data;
                         },
                         function onError(error) {

@@ -1,0 +1,16 @@
+<ion-view title="Story" id="page9" class=" ">
+    <ion-content padding="true" class="has-header">
+        <h1>{{story.name}}</h1>
+        {{story.description}}
+        <ion-item class="item-thumbnail-left item-icon-right  "  ng-repeat="chapter in story.chapters" ui-sref="tabsController.story">
+            <h2>{{chapter.name}}</h2>
+            <p>{{chapter.description}}<br>
+                <audio controls>
+                    <source src="{{getSafeUrl(chapter.audio)}}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </p>
+            <i class="icon ion-forward"></i>
+        </ion-item>
+    </ion-content>
+</ion-view>
