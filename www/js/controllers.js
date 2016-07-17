@@ -94,6 +94,7 @@ angular.module('app.controllers', ['app.services'])
 
     .controller('storyCtrl', function($scope, $stateParams, stories) {
         $scope.story = stories.getItem($stateParams.storyId);
+        console.log($scope.story);
     })
 
     .controller('chapterCtrl', function($scope, $stateParams, chapter, stories) {

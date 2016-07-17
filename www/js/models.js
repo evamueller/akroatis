@@ -9,24 +9,25 @@ angular.module('app.models', [])
 
         storiesService.setAll = function(stories) {
             storiesList = stories;
-        }
+        };
 
         storiesService.getAll = function() {
-            console.log(storiesList);
             return storiesList;
-        }
+        };
         storiesService.getItem = function(storyId) {
-            return $filter('filter')(storiesList, {_id: storyId})[0];
-        }
+            return $filter('filter')(storiesList, storyId)[0];
+        };
         storiesService.addItem = function(item) {
             storiesList.push(item);
-        }
+        };
+
         storiesService.removeItem = function(item) {
             storiesList.splice(storiesList.indexOf(item), 1);
-        }
+        };
+
         storiesService.size = function() {
             return storiesList.length;
-        }
+        };
         return storiesService;
     })
     .service('chapter', function() {
@@ -38,7 +39,7 @@ angular.module('app.models', [])
 
         chapterService.addItem = function(story, chapter) {
             story.chapters.push(chapter);
-        }
+        };
 
         chapterService.removeItem = function(story, chapter) {
             story.chapters.splice(story.chapters.indexOf(chapter), 1);
