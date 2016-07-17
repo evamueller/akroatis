@@ -38,6 +38,11 @@ angular.module('app.controllers', ['app.services'])
                 myLocation = new google.maps.Marker({
                     position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
                     map: map,
+                    icon: {
+                        url: "img/listening.svg",
+                        anchor: new google.maps.Point(25, 50),
+                        scaledSize: new google.maps.Size(50, 50)
+                    },
                     title: "My Location"
                 });
             });
