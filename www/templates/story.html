@@ -2,7 +2,7 @@
     <ion-content padding="true" class="has-header">
         <h1>{{story.name}}</h1>
         {{story.description}}
-        <ion-item class="item-thumbnail-left item-icon-right  "  ng-repeat="chapter in story.chapters" ng-href="chapter/{{chapter.id}}" ui-sref="tabsController.story">
+        <ion-item class="item-thumbnail-left item-icon-right"  ng-repeat="chapter in story.chapters" ui-sref="tabsController.story({storyId:chapter._id})">
             <h2>{{chapter.name}}</h2>
             <p>{{chapter.description}}<br>
                 <audio controls>

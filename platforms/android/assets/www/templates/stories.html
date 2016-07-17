@@ -1,7 +1,7 @@
 <ion-view title="Stories" id="page8" class=" ">
-    <ion-content padding="true" class="has-header">
+    <ion-content padding="true" class="has-header has-header-with-margin">
         <ion-list id="stories-list3" class=" manual-list-fullwidth ">
-            <ion-item class="item-thumbnail-left item-icon-right  "  ng-repeat="story in stories" ng-href="story/{{story.id}}" ui-sref="tabsController.story">
+            <ion-item class="item-thumbnail-left item-icon-right"  ng-repeat="story in stories" ui-sref="tabsController.story({storyId: story._id})">
                 <h2>{{story.name}}</h2>
                 <p>{{story.description}}</p>
                 <i class="icon ion-forward"></i>

@@ -19,3 +19,11 @@
 /*.audio-stories{
   width:100%;
 }*/
+.center-map-button{
+  position:absolute;
+  bottom:50px;
+  left:25px;
+}
+.has-header-with-margin{
+  top:40px;
+}

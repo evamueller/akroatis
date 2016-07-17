@@ -33,10 +33,10 @@ angular.module('app.controllers', ['app.services'])
         .then(null, function(err) {
             // error
         }, function(position) {
+            $scope.geolocation = position.coords;
             if (myLocation !== undefined) {
                 myLocation.setMap(null);
             }
-            map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
             myLocation = new google.maps.Marker({
                 position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
                 map: map,
@@ -49,6 +49,7 @@ angular.module('app.controllers', ['app.services'])
             enableHighAccuracy: false
         })
         .then(function(position) {
+            map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
             database.getStoriesNearMe(position.coords.latitude, position.coords.longitude, 50000)
                 .then(function(stories) {
                     $scope.stories = stories;
@@ -78,6 +79,9 @@ angular.module('app.controllers', ['app.services'])
         });
 
     $scope.map = map;
+    $scope.center = function() {
+        map.setCenter(new google.maps.LatLng($scope.geolocation.latitude, $scope.geolocation.longitude));
+    }
 })
 
 .controller('settingsPageCtrl', function($scope) {
@@ -93,7 +97,9 @@ angular.module('app.controllers', ['app.services'])
 })
 
 .controller('storiesCtrl', function($scope, database) {
-    $scope.stories = database.getStoriesNearMe();
+    database.getAllStories().then(function(data){
+      $scope.stories = data;
+    });
 })
 
 .controller('storyCtrl', function($scope, $stateParams, stories) {
